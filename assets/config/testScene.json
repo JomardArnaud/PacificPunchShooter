@@ -1,0 +1,22 @@
+{
+    "animations":{
+        "jimmySprite":{
+            "pathTex":"assets/sprite/sprite_sheet_mind_master.png",
+            "rectSprite":"50,350,95,135",
+            "sizeCase":"0,0,96,138",
+            "nbAnim":"16",
+            "framePerline":"4",
+            "startingLine":"0",
+            "timePerFrame":"0.1"    
+        },
+        "loicSprite":{
+            "pathTex":"assets/sprite/spritessheeeeeeet.png",
+            "rectSprite":"175,350,95,135",
+            "sizeCase":"0,0,83,135",
+            "nbAnim":"16",
+            "framePerline":"4",
+            "startingLine":"0",
+            "timePerFrame":"0.1"
+        }
+    }
+}
