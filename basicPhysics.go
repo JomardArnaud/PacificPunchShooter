@@ -2,26 +2,28 @@ package main
 
 import "math"
 
-//OpPhysics2d is a struct to manage collider and velocity of circle in 2D
-type OpPhysics2d struct {
-	Origin   OpVector2f
-	Size     OpVector2f
-	Force    OpVector2f
-	Inertia  float64
-	Velocity float64
+//OpInfo2d is a struct to manage collider and Step of circle in 2D
+type OpInfo2d struct {
+	Pos     OpVector2f
+	Size    OpVector2f
+	Force   OpVector2f
+	Inertia float64
+	Step    float64
 }
 
-func (p *OpPhysics2d) init(pos, size OpVector2f, inertia, velocity float64) {
-	p.Origin = pos
-	p.Size = size
-	p.Inertia = inertia
-	p.Velocity = velocity
+//InitFromFile config
+func (info *OpInfo2d) InitFromFile(infoBlock OpBlock) {
+	info.Pos = OpSetOpVector2f(infoBlock.Info["pos"])
+	info.Size = OpSetOpVector2f(infoBlock.Info["size"])
+	info.Force = OpSetOpVector2f(infoBlock.Info["force"])
+	info.Inertia = OpSetFloat(infoBlock.Info["inertia"])
+	info.Step = OpSetFloat(infoBlock.Info["step"])
 }
 
 //ApplyForce on the Object using the elapsedTime
-func (p *OpPhysics2d) ApplyForce(elapsedTime float64) {
-	p.Origin.AddForces(p.Force.X*elapsedTime, p.Force.Y*elapsedTime)
-	p.Force.MulForce(p.Inertia)
+func (info *OpInfo2d) ApplyForce(elapsedTime float64) {
+	info.Pos.AddForces(info.Force.X*elapsedTime, info.Force.Y*elapsedTime)
+	info.Force.MulForce(info.Inertia)
 }
 
 //simple math stuff

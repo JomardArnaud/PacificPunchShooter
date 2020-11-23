@@ -1,9 +1,6 @@
 {
     "config":{
-      "deadZone":"10000.0",
-      "buffer":"1",
-      "sizeWindow":"1600,900",
-      "posWindow":"10,10",
-      "timer":"0.0167"  
+      "deadZone":".05",
+      "buffer":"1"
 	}
 }

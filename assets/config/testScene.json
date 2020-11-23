@@ -1,22 +1,43 @@
 {
-    "animations":{
-        "jimmySprite":{
-            "pathTex":"assets/sprite/sprite_sheet_mind_master.png",
-            "rectSprite":"50,350,95,135",
-            "sizeCase":"0,0,96,138",
-            "nbAnim":"16",
-            "framePerline":"4",
-            "startingLine":"0",
-            "timePerFrame":"0.1"    
+    "animators":{
+        "jimmyAnimator":{
+            "path":"assets/sprite/sprite_sheet_mind_master.png",
+            "state":"walkRight",
+            "filter":"1",
+            "pos":"5,50",
+            "size":"95,135",
+            "force":"0,0",
+            "inertia":"1",
+            "step":"100",
+            "animations":{
+                "walkRight":{
+                    "sizeCase":"96,138",
+                    "nbAnim":"4",
+                    "framePerline":"4",
+                    "startingLine":"2",
+                    "timePerFrame":"0.15" 
+                }
+            }   
         },
-        "loicSprite":{
-            "pathTex":"assets/sprite/spritessheeeeeeet.png",
+        "loicAnimator":{
+            "path":"assets/sprite/spritessheeeeeeet.png",
             "rectSprite":"175,350,95,135",
             "sizeCase":"0,0,83,135",
             "nbAnim":"16",
             "framePerline":"4",
             "startingLine":"0",
             "timePerFrame":"0.1"
+        }
+    },
+    "sprites":{
+        "cursor":{
+            "path":"assets/sprite/arme_bolosse.png",
+            "filter":"1",
+            "pos":"100,100",
+            "size":"225,225",
+            "force":"0,0",
+            "inertia":"1",
+            "step":"100"
         }
     }
 }

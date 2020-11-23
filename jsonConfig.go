@@ -7,14 +7,15 @@ import (
 	"reflect"
 )
 
-type block struct {
+//OpBlock contains all info of part's Json file
+type OpBlock struct {
 	Info   map[string]string
-	Blocks map[string]block
+	Blocks map[string]OpBlock
 }
 
 //OpInfoParser is a tool to parse and store data of a .JSON file
 type OpInfoParser struct {
-	Blocks map[string]block
+	Blocks map[string]OpBlock
 }
 
 func getKeyFromBlock(m map[string]interface{}) []string {
@@ -25,7 +26,7 @@ func getKeyFromBlock(m map[string]interface{}) []string {
 	return tmpList
 }
 
-func dispBlock(depth int, b map[string]block) {
+func dispBlock(depth int, b map[string]OpBlock) {
 	for key := range b {
 		for i := 1; i < depth; i++ {
 			fmt.Print("   ")
@@ -41,9 +42,9 @@ func dispBlock(depth int, b map[string]block) {
 	}
 }
 
-func digInJSON(mapBlock map[string]interface{}) block {
+func digInJSON(mapBlock map[string]interface{}) OpBlock {
 	listBlock := getKeyFromBlock(mapBlock)
-	b := block{make(map[string]string), make(map[string]block)}
+	b := OpBlock{make(map[string]string), make(map[string]OpBlock)}
 	for _, v := range listBlock {
 		if reflect.TypeOf(mapBlock[v]) != reflect.TypeOf("") {
 			b.Blocks[v] = digInJSON(mapBlock[v].(map[string]interface{}))

@@ -1,13 +1,16 @@
 package main
 
-import "github.com/hajimehoshi/ebiten"
+import (
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/veandco/go-sdl2/sdl"
+)
 
 //IOpScene is interface for scene
 type IOpScene interface {
 	GetFileConfig() string
 	Init(OpGameConfig)
 	Reset(OpGameConfig)
-	Event(OpGameConfig) string
+	Event(OpGameConfig, sdl.Event) string
 	Update(OpGameConfig, float64) string
 	Draw(screen *ebiten.Image)
 	PassInfoToNextScene(IOpScene)
@@ -32,9 +35,9 @@ func (manager *OpSceneManager) init(gameInfo OpGameConfig) {
 	manager.allScene = make(map[string]IOpScene)
 }
 
-func (manager *OpSceneManager) event(gameInfo OpGameConfig) {
+func (manager *OpSceneManager) event(gameInfo OpGameConfig, event sdl.Event) {
 	manager.idPrevScene = manager.idScene
-	manager.idScene = manager.allScene[manager.idScene].Event(gameInfo)
+	manager.idScene = manager.allScene[manager.idScene].Event(gameInfo, event)
 	if manager.idPrevScene != manager.idScene {
 		manager.allScene[manager.idPrevScene].PassInfoToNextScene(manager.allScene[manager.idScene])
 		manager.allScene[manager.idScene].Reset(gameInfo)

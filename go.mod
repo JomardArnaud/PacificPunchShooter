@@ -1,9 +1,9 @@
-module JomardArnaud/PacificPunch
+module test
 
-go 1.14
+go 1.15
 
 require (
-	github.com/JomardArnaud/OpPi v0.0.0-20201119214652-1a19be1a2e20
 	github.com/hajimehoshi/ebiten v1.12.3
-	github.com/hajimehoshi/ebiten/v2 v2.0.0 // indirect
+	github.com/hajimehoshi/ebiten/v2 v2.0.0
+	github.com/veandco/go-sdl2 v0.4.4
 )
